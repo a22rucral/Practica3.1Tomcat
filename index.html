@@ -1,0 +1,571 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://mydomain.org/mysite/">
+      
+      
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.44">
+    
+    
+      
+        <title>Practica3.1Tomcat</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.0253249f.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#practica-31-tomcat-y-maven" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="." title="Practica3.1Tomcat" class="md-header__button md-logo" aria-label="Practica3.1Tomcat" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Practica3.1Tomcat
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Practica 3.1 Tomcat y Maven.
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="." title="Practica3.1Tomcat" class="md-nav__button md-logo" aria-label="Practica3.1Tomcat" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Practica3.1Tomcat
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Practica 3.1 Tomcat y Maven.
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="." class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Practica 3.1 Tomcat y Maven.
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#instalacion-de-apache-tomcat-en-debian-11" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instalación de Apache Tomcat en Debian 11.
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Instalación de Apache Tomcat en Debian 11.">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuracion-previa" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuración Previa .
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instalacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instalación.
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#despliegue-manual-mediante-gui-de-administracion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Despliegue Manual Mediante GUI de administración
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#instalacion-de-maven" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instalación de Maven.
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#despliegue-aplicacion-prueba" class="md-nav__link">
+    <span class="md-ellipsis">
+      Despliegue Aplicacion Prueba
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rock-paper-scissorc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rock Paper Scissorc
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cuestiones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cuestiones :
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#instalacion-de-apache-tomcat-en-debian-11" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instalación de Apache Tomcat en Debian 11.
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Instalación de Apache Tomcat en Debian 11.">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuracion-previa" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuración Previa .
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instalacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instalación.
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#despliegue-manual-mediante-gui-de-administracion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Despliegue Manual Mediante GUI de administración
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#instalacion-de-maven" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instalación de Maven.
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#despliegue-aplicacion-prueba" class="md-nav__link">
+    <span class="md-ellipsis">
+      Despliegue Aplicacion Prueba
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rock-paper-scissorc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rock Paper Scissorc
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cuestiones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cuestiones :
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="practica-31-tomcat-y-maven">Practica 3.1 Tomcat y Maven.</h1>
+<h2 id="instalacion-de-apache-tomcat-en-debian-11">Instalación de Apache Tomcat en Debian 11.</h2>
+<h3 id="configuracion-previa">Configuración Previa .</h3>
+<p>Antes de empezar tenemos que abrir el puerto por defecto de tomcat 8080 con el siguiente comando:</p>
+<pre><code class="language-console">sudo ufw allow 8080
+</code></pre>
+<p>A continueación actualizaremos los repositorios ejecutando el siguiente comando. </p>
+<p><img alt="Imagen 1" src="assets/01_update.png" /></p>
+<p>Instalaremos Java como se muestra en la siguiente captura. </p>
+<p><img alt="Imagen 2" src="assets/02_installjdk.png" /></p>
+<h3 id="instalacion">Instalación.</h3>
+<p>Instalamos tomcat con el siguiente comando: </p>
+<p><img alt="Imagen 3" src="assets/03_installtomcat.png" /></p>
+<p>Ahora añadiremos un usuario de tomcat, previamente habiendo creado un grupo ejecutando los comandos de la captura.</p>
+<p><img alt="Imagen 4" src="assets/04_groupuseradd.png" /></p>
+<p>Ahora que Tomcat está instalado, podemos iniciarlo y comprobaremos si lo hace de forma correcta, debería aparecer como en la captura. </p>
+<p><img alt="Imagen 5" src="assets/05_startomcat.png" /></p>
+<p>Ahora definiremos un usuario con acceso a tomcat. Para ello entraremos en el archivo de configuración <strong>/etc/tomcat9</strong> </p>
+<p><img alt="Imagen 6" src="assets/06_editaruser.png" /></p>
+<p>Y lo editaremos de la siguiente manera. </p>
+<p><img alt="Imagen 7" src="assets/07_usuarioseditaros.png" /></p>
+<p>Ahora si accedemos al enlace http://localhost:8080 debería salir lo siguiente. </p>
+<p><img alt="Imagen 8" src="assets/08_tomcatweb.png" /></p>
+<p>El siguiente paso es descargar el gestor web de Tomcat y el administrador anfitrión de Tomcat de la siguiente manera: </p>
+<p><img alt="Imagen 9" src="assets/09_installtomcatadmin.png" /></p>
+<p>Tras esto podemos acceder a localhost con nuestras credenciales de usuario previamente introducidas y accederemos a la siguiente página. </p>
+<p><img alt="Imagen 10" src="assets/10_tomcatmanager.png" /></p>
+<h2 id="despliegue-manual-mediante-gui-de-administracion">Despliegue Manual Mediante GUI de administración</h2>
+<p>En la siguiente sección de la página previamente abierta, subiremos un archivo war que en este caso se llamará sample y le damos a desplegar.</p>
+<p><img alt="Imagen 11" src="assets/11_archivowarsubir.png" /></p>
+<p>Tras el despliegue nos apracerá en aplicaciones .</p>
+<p><img alt="Imagen 12" src="assets/12_archivowarsubido.png" /></p>
+<p>Si hacemos click podremos acceder a el archivo que se verá de la siguiente manera. </p>
+<p><img alt="Imagen 13" src="assets/13_sample.png" /></p>
+<h2 id="instalacion-de-maven">Instalación de Maven.</h2>
+<p>Instalamos maven con el siguiente comando :</p>
+<p><img alt="Imagen 14" src="assets/14_maveninstalado.png" /></p>
+<p>Tras esto comprobamos si maven está instalado y la versión que tenemos:</p>
+<p><img alt="Imagen 15" src="assets/15_versionmvn.png" /></p>
+<h2 id="despliegue-aplicacion-prueba">Despliegue Aplicacion Prueba</h2>
+<p>Debemos añadir configuraciones al archivo de <strong>/etc/tomcat9/tomcat-user.xml</strong> para que permita que Maven se autentique contra Tomcat y pueda realizar el despliegue. </p>
+<p><img alt="Imagen 16" src="assets/16_a%C3%B1adirmanagerscript.png" /></p>
+<p>Como segundo paso deberemos editar el archivo <strong>/etc/maven/settings.xml</strong> para indicarle a Maven un identificador para el servidor sobre el que vamos a desplegar, así como las credenciales, como aparece en la siguiente captura: </p>
+<p><img alt="Imagen 17" src="assets/17_settingxml.png" /></p>
+<p>Teniendo ya listo para realizar despligues, ahora crearemos una aplicacion de JAva para ver si podemos desplegarla sobre la arquitectura que ya hemos montado para ello usaremos el siguiente comando : </p>
+<pre><code class="language-console">mvn archetype:generate -DgroupId=raul -DartifactId=war-deploy -DarchetypeArtifactId=maven-archetype-webapp -DinteractiveMode=false
+</code></pre>
+<p><img alt="Imagen 18" src="assets/18_desplieguemaven.png" /></p>
+<p>Tras esto, se abrá creado en la raíz una carpeta que es la que contiene la aplicación con los siguientes archivos :</p>
+<p><img alt="Imagen 19" src="assets/19_carpetadespliegue.png" /></p>
+<p>Ahora editaremos el pom.xml de la siguiente manera.</p>
+<p><img alt="Imagen 20" src="assets/20_pluginedit.png" /></p>
+<p>Tras esto veremos nuestra aplicación subida a la web y podremos acceder a ella. </p>
+<p><img alt="Imagen 21" src="assets/21_miaplicaionmanager.png" /></p>
+<h2 id="rock-paper-scissorc">Rock Paper Scissorc</h2>
+<p>Realizaremos el despliegue con otra aplicación alojada en un repositorio de github. 
+Primero lo clonamos : </p>
+<p><img alt="Imagen 22" src="assets/22_clonarepositorio.png" /></p>
+<p>Tras esto nos situaremos dentro de la carpeta del repositorio clonada y cambiamos de rama con el siguiente comando.</p>
+<p><img alt="Imagen 23" src="assets/23_rama.png" /></p>
+<p>Subiremos el archivo .war que se enceuntra dentro de la carpeta target del respositorio desde el manager de tomcat. </p>
+<p><img alt="Imagen 25" src="assets/25_subirwar.png" /></p>
+<p>Configuraremos el pom.xml con lo siguientes datos:</p>
+<p><img alt="Imagen 26" src="assets/26_modificarpom.png" /></p>
+<p>Desplegamremos la aplicación  con el siiguiente comando en el mismo nivel en el que se encuentra el archivo pom.xml. </p>
+<pre><code>mvn tomcat:deploy
+</code></pre>
+<p><img alt="Imagen 27" src="assets/27_despliegueactivo.png" /></p>
+<p>Vemos que la aplicacion está en el manager de tomcat.</p>
+<p><img alt="Imagen 29" src="assets/29_resultado.png" /></p>
+<p>Mediante la ruta http://localhost:8080/rock-paper-scissors accederemos a la aplicación y podremos interactuar con ella. </p>
+<p><img alt="Imagen 28" src="assets/28_maganer.png" /></p>
+<h2 id="cuestiones">Cuestiones :</h2>
+<p>Habéis visto que los archivos de configuración que hemos tocado contienen contraseñas en texto plano, por lo que cualquiera con acceso a ellos obtendría las credenciales de nuestras herramientas.</p>
+<p>En principio esto representa un gran riesgo de seguridad, ¿sabrías razonar o averigüar por qué esto está diseñado de esta forma?</p>
+<p>Las contraseñas en texto plano presentan una simplicidad y compatibilidad, estas se usan para facilitar  una configuración rápida y la integración de herramientas sin complicaciones. Esta seguridad se basa en restringir el acceso al sistema en lugar de cifrar las contraseñas, por lo que supone un riesgo si alguien se hace con los archivos. </p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": ".", "features": [], "search": "assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+    
+  </body>
+</html>
